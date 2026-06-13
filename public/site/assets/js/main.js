@@ -422,41 +422,39 @@
       })
     },
     imageSlideGsap: function () {
+      const animateIfPresent = function (selector, animation) {
+        if (!document.querySelector(selector)) {
+          return;
+        }
+
+        gsap.to(selector, animation);
+      };
+
       $(document).ready(function () {
-        gsap.to(".images", {
+        animateIfPresent('.images', {
           scrollTrigger: {
-            // trigger: ".images",
-            start: "top bottom",
-            end: "bottom top",
+            start: 'top bottom',
+            end: 'bottom top',
             scrub: 1,
-            // markers: true
           },
           x: -250,
-        })
-      });
-      $(document).ready(function () {
-        gsap.to(".images-r", {
+        });
+        animateIfPresent('.images-r', {
           scrollTrigger: {
-            // trigger: ".images",
-            start: "top bottom",
-            end: "bottom top",
+            start: 'top bottom',
+            end: 'bottom top',
             scrub: 1,
-            // markers: true
           },
           x: 250,
-        })
-      });
-      $(document).ready(function () {
-        gsap.to(".images-2", {
+        });
+        animateIfPresent('.images-2', {
           scrollTrigger: {
-            // trigger: ".images",
-            start: "top bottom",
-            end: "bottom top",
+            start: 'top bottom',
+            end: 'bottom top',
             scrub: 1,
-            // markers: true
           },
           y: -290,
-        })
+        });
       });
     },
 

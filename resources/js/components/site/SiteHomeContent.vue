@@ -1,5 +1,6 @@
 ﻿<script setup lang="ts">
 import SiteOfficeSection from '@/components/site/SiteOfficeSection.vue';
+import ProjectCaseMedia from '@/components/site/ProjectCaseMedia.vue';
 import { useI18n } from '@/composables/useI18n';
 import { siteAsset } from '@/composables/useSiteAsset';
 import { Link } from '@inertiajs/vue3';
@@ -50,15 +51,6 @@ const serviceCards = [
         tagKeys: ['ios', 'android', 'mvp', 'uiux', 'support'],
     },
 ] as const;
-
-const portfolioImages = [
-    siteAsset('images/portfolio/01.webp'),
-    siteAsset('images/portfolio/02.webp'),
-    siteAsset('images/portfolio/03.webp'),
-];
-
-const projectImage = (index: number, bannerUrl: string | null): string =>
-    bannerUrl ?? portfolioImages[index % portfolioImages.length];
 </script>
 
 <template>
@@ -187,11 +179,9 @@ const projectImage = (index: number, bannerUrl: string | null): string =>
                 <div class="cases-carousel square-dot wow fadeInUp" data-wow-delay=".25s">
                     <div class="swiper cases-slider">
                         <div class="swiper-wrapper">
-                            <div v-for="(project, index) in projects" :key="project.id" class="swiper-slide">
+                            <div v-for="project in projects" :key="project.id" class="swiper-slide">
                                 <article class="case-slide">
-                                    <div class="case-slide__media">
-                                        <img :src="projectImage(index, project.banner_url)" :alt="project.title" />
-                                    </div>
+                                    <ProjectCaseMedia :title="project.title" :banner-url="project.banner_url" />
                                     <div class="case-slide__panel">
                                         <div v-if="project.category" class="slide-category">
                                             <span class="slide-category__icon" aria-hidden="true"></span>

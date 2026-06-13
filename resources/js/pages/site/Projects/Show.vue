@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SiteLayout from '@/layouts/site/SiteLayout.vue';
+import ProjectCaseMedia from '@/components/site/ProjectCaseMedia.vue';
 import { useI18n } from '@/composables/useI18n';
 import { siteAsset } from '@/composables/useSiteAsset';
 import { Link } from '@inertiajs/vue3';
@@ -51,9 +52,11 @@ const { t } = useI18n();
 
                         <h1 class="site-article__title second-font font-semi-bold">{{ project.title }}</h1>
 
-                        <div v-if="project.banner_url" class="site-article__banner">
-                            <img :src="project.banner_url" :alt="project.title" />
-                        </div>
+                        <ProjectCaseMedia
+                            :title="project.title"
+                            :banner-url="project.banner_url"
+                            variant="article"
+                        />
 
                         <div class="site-article__content" v-html="project.content"></div>
                     </div>
