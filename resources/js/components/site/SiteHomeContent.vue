@@ -72,7 +72,6 @@ const serviceCards = [
                             <span class="intro-hero__outline">SOLUTIONS</span>
                         </span>
                     </h1>
-                    <p class="intro-hero__tagline">{{ t('site.hero.tagline') }}</p>
                     <p class="intro-hero__desc">{{ t('site.hero.description') }}</p>
                     <ul class="intro-hero__tags" :aria-label="t('site.hero.tags_label')">
                         <li v-for="tag in heroTags" :key="tag">{{ t(`site.hero.tags.${tag}`) }}</li>

@@ -54,7 +54,7 @@ test('kazakh translations are loaded from lang/kz.json', function () {
     $response->assertInertia(fn ($page) => $page
         ->where('locale', 'kz')
         ->where('i18n.auth.login.title', 'Аккаунтқа кіру')
-        ->where('i18n.site.hero.tagline', 'Техниканы жөндейміз, құжаттарды басып шығарамыз және цифрлық өнімдер жасаймыз — бәрі бір жерде.')
+        ->where('i18n.site.hero.description', 'Сервис орталығы, типография және әзірлеу студиясы: Түркістандағы бизнес тапсырмаларына сайттар, қосымшалар және интернет-дүкендер.')
     );
 });
 
