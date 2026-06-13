@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Canonical URL: redirect browser requests to /public/... to /... (same as Laravel docroot = public)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+public/?\s [NC]
+RewriteRule ^public/?$ / [L,R=301,QSA]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+public/ [NC]
+RewriteRule ^public/(.*)$ /$1 [L,R=301,QSA]
+
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L,QSA]

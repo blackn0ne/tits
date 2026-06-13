@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Enums\UserRole;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class AdminUserSeeder extends Seeder
+{
+    /**
+     * Seed the application's admin user.
+     */
+    public function run(): void
+    {
+        User::query()->updateOrCreate(
+            ['username' => 'admin'],
+            [
+                'name' => 'Moka Admin',
+                'email' => 'mokhamediyar@gmail.com',
+                'password' => Hash::make('index0322'),
+                'role' => UserRole::Admin,
+                'email_verified_at' => now(),
+            ],
+        );
+    }
+}

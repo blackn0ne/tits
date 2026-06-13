@@ -1,0 +1,95 @@
+.wpr-faq-area {
+    .section-inner {
+        position: relative;
+        z-index: 1;
+        .section-content-area {
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+
+            .accordion-one {
+                max-width: 856px;
+                width: 100%;
+                margin: auto;
+                margin-top: 60px;
+            }
+
+            .accordion-one {
+                border-radius: 10px;
+                overflow: hidden;
+
+                .accordion-item {
+                    border: none;
+                    padding: 26px 32px;
+                    margin-bottom: 16px;
+                    background: linear-gradient(137.66deg, #F5F5F5 21.13%, #F2F2F2 80.53%);
+                    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), inset 0px -5px 0px #E4E4E4, inset 0px -6px 0px 1px #FAFAFA;
+                    border-radius: 12px;
+                }
+
+                .accordion-header {
+                    button {
+                        line-height: 1;
+                        font-size: 18px;
+                        font-weight: 600;
+                        font-family: var(--font-secondary);
+                        text-transform: none;
+                        letter-spacing: 0;
+                        background: transparent;
+                        box-shadow: none !important;
+                        padding: 0;
+                        color: var(--color-heading-1);
+
+                        &::after {
+                            content: '—';
+                            width: 32px;
+                            height: 32px;
+                            line-height: 32px;
+                            background: var(--color-heading-1);
+                            background: linear-gradient(137.66deg, #40454A 21.13%, #292C2E 80.53%);
+                            border-radius: 4px;
+                            color: var(--color-primary);
+                            font-family: "Font Awsome 6 Pro";
+                            transform: none;
+                            display: block;
+                            text-align: center;
+                            font-size: 10px;
+                        }
+
+                        &.collapsed {
+                            &:after {
+                                content: '\2b';
+                                font-size: 16px;
+                                transition: var(--transition);
+                            }
+                        }
+                    }
+                }
+
+                .accordion-body {
+                    padding: 0;
+                    padding-top: 20px;
+                    p{
+                        color: var(--color-heading-1);
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+        .top-left-shape{
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+        }
+        .bg-shape{
+            position: absolute;
+            z-index: -1;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
+.accordion-collapse {
+  transition: height 0.4s ease, opacity 0.4s ease;
+}

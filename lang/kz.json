@@ -1,0 +1,577 @@
+{
+    "roles": {
+        "admin": "Әкімші",
+        "user": "Пайдаланушы"
+    },
+    "nav": {
+        "dashboard": "Жинақ",
+        "languages": "Тілдер",
+        "site_settings": "Сайт баптаулары",
+        "platform": "Мәзір",
+        "settings": "Профиль",
+        "log_out": "Шығу",
+        "log_in": "Кіру",
+        "blog": "Блог",
+        "blog_posts": "Блогтар",
+        "blog_categories": "Санаттар",
+        "works": "Біздің жұмыстар",
+        "projects": "Жобалар",
+        "project_categories": "Санаттар",
+        "sales": "Сатулар",
+        "sales_orders": "Тапсырыстар",
+        "sales_products": "Тауарлар",
+        "sales_services": "Қызметтер",
+        "sales_clients": "Клиенттер",
+        "sales_reports": "Есептер"
+    },
+    "welcome": {
+        "title": "Қош келдіңіз",
+        "get_started": "Бастайық"
+    },
+    "pagination": {
+        "summary": "Көрсетілген :from–:to, барлығы :total",
+        "previous": "Артқа",
+        "next": "Алға"
+    },
+    "dashboard": {
+        "title": "Жинақ",
+        "description_admin": "Негізгі көрсеткіштер :from — :to",
+        "description_user": "Қош келдіңіз, :name",
+        "user_welcome": "Сәлеметсіз бе, :name",
+        "user_hint": "Басқару бөлімдеріне қолжетімділік жоқ. Аккаунт деректерін жаңарту үшін профильге өтіңіз.",
+        "kpi": {
+            "revenue": "Айлық кіріс",
+            "orders": "Айлық тапсырыстар",
+            "average_order": "Орташа чек",
+            "clients": "Клиенттер",
+            "clients_hint": "«Магазин» жүйелік клиентінсіз",
+            "vs_last_month": "өткен айға қатысты"
+        },
+        "trend": {
+            "no_change": "өзгеріссіз",
+            "new": "жаңа деректер"
+        },
+        "chart": {
+            "title": "Кіріс динамикасы",
+            "subtitle": "Соңғы 30 күн",
+            "empty": "Аяқталған тапсырыстар әлі жоқ"
+        },
+        "sales_breakdown": {
+            "products": "Айлық тауарлар",
+            "services": "Айлық қызметтер"
+        },
+        "catalog": {
+            "title": "Каталог",
+            "products": "Белсенді тауарлар",
+            "services": "Белсенді қызметтер",
+            "clients": "Клиенттер"
+        },
+        "content": {
+            "title": "Контент",
+            "blog": "Блог (жарияланған)",
+            "projects": "Жобалар (жарияланған)",
+            "drafts": "Жоба жазбалары"
+        },
+        "site": {
+            "title": "Сайт күйі",
+            "maintenance_on": "Қызмет көрсету режимі қосулы — жария сайт қолжетімсіз.",
+            "maintenance_off": "Сайт қалыпты режимде жұмыс істейді."
+        },
+        "recent_orders": {
+            "title": "Соңғы тапсырыстар",
+            "all": "Барлық тапсырыстар",
+            "client": "Клиент",
+            "date": "Күні",
+            "total": "Сома",
+            "status": "Күйі",
+            "empty": "Тапсырыстар әлі жоқ"
+        },
+        "actions": {
+            "title": "Жылдам әрекеттер",
+            "new_order": "Жаңа тапсырыс",
+            "new_post": "Жаңа мақала",
+            "new_project": "Жаңа жоба",
+            "reports": "Есептер",
+            "site_settings": "Сайт баптаулары"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Аккаунтқа кіру",
+            "description": "Пайдаланушы аты мен құпия сөзді енгізіңіз",
+            "page_title": "Кіру",
+            "username": "Пайдаланушы аты",
+            "password": "Құпия сөз",
+            "remember": "Мені есте сақтау",
+            "submit": "Кіру",
+            "password_placeholder": "Құпия сөз"
+        },
+        "verify_email": {
+            "title": "Email растау",
+            "description": "Хаттағы сілтеме арқылы электрондық поштаны растаңыз.",
+            "page_title": "Email растау",
+            "resend": "Хатты қайта жіберу",
+            "link_sent": "Растау сілтемесі email-ге жіберілді."
+        },
+        "confirm_password": {
+            "title": "Құпия сөзді растаңыз",
+            "description": "Бұл қорғалған аймақ. Жалғастыру үшін құпия сөзді растаңыз.",
+            "page_title": "Құпия сөзді растау",
+            "password": "Құпия сөз",
+            "submit": "Растау"
+        }
+    },
+    "settings": {
+        "title": "Баптаулар",
+        "description": "Профиль мен аккаунт баптауларын басқару",
+        "profile": "Профиль",
+        "password": "Құпия сөз",
+        "appearance": "Көрініс",
+        "saved": "Сақталды",
+        "save": "Сақтау",
+        "profile_settings": "Профиль баптаулары",
+        "profile_information": "Профиль ақпараты",
+        "profile_information_description": "Атыңыз бен email-ді жаңартыңыз",
+        "name": "Аты",
+        "name_placeholder": "Толық аты",
+        "email": "Email",
+        "email_placeholder": "Электрондық пошта",
+        "email_unverified": "Email расталмаған.",
+        "resend_verification": "Растау хатын қайта жіберу",
+        "verification_link_sent": "Растау сілтемесі email-ге жіберілді.",
+        "password_settings": "Құпия сөз баптаулары",
+        "update_password": "Құпия сөзді жаңарту",
+        "update_password_description": "Қауіпсіздік үшін ұзын кездейсоқ құпия сөз қолданыңыз",
+        "current_password": "Ағымдағы құпия сөз",
+        "current_password_placeholder": "Ағымдағы құпия сөз",
+        "new_password": "Жаңа құпия сөз",
+        "new_password_placeholder": "Жаңа құпия сөз",
+        "confirm_password": "Құпия сөзді растау",
+        "confirm_password_placeholder": "Құпия сөзді растау",
+        "save_password": "Құпия сөзді сақтау",
+        "appearance_settings": "Көрініс",
+        "appearance_description": "Қолданба көрінісін баптаңыз",
+        "theme_light": "Жарық",
+        "theme_dark": "Қараңғы",
+        "theme_system": "Жүйелік",
+        "delete_account": "Аккаунтты жою",
+        "delete_account_description": "Аккаунт пен барлық деректерді жою",
+        "warning": "Ескерту",
+        "delete_warning": "Бұл әрекетті болдырмау мүмкін емес. Абай болыңыз.",
+        "delete_confirm_title": "Аккаунтты жойғыңыз келетініне сенімдісіз бе?",
+        "delete_confirm_description": "Жойылғаннан кейін барлық деректер мәңгі жойылады. Растау үшін құпия сөзді енгізіңіз.",
+        "cancel": "Болдырмау"
+    },
+    "admin": {
+        "languages": {
+            "title": "Тілдер",
+            "description": "Интерфейс тілдерін басқару",
+            "code": "Код",
+            "name": "Атауы",
+            "file": "Аударма файлы",
+            "file_hint": "Аудармалар файлда өңделеді"
+        },
+        "site": {
+            "title": "Сайт баптаулары",
+            "description": "SEO, брендинг және байланыс ақпараты",
+            "general": "Жалпы",
+            "seo": "SEO",
+            "contacts": "Байланыс",
+            "social": "Әлеуметтік желілер",
+            "branding": "Брендинг",
+            "site_name": "Сайт атауы",
+            "meta_description": "Сипаттама (meta description)",
+            "meta_keywords": "Кілт сөздер (meta keywords)",
+            "seo_description": "Тақырып үлгілері, Open Graph, индекстеу және сайт картасы",
+            "title_separator": "Тақырып бөлгіші",
+            "default_robots": "Әдепкі robots",
+            "twitter_handle": "Twitter / X",
+            "google_verification": "Google Search Console",
+            "yandex_verification": "Яндекс.Вебмастер",
+            "sitemap_enabled": "Сайт картасы (sitemap.xml)",
+            "sitemap_enabled_hint": "Іздеу жүйелері үшін sitemap.xml генерациясы",
+            "og_image": "Әдепкі OG-сурет",
+            "robots_txt": "robots.txt",
+            "robots_txt_placeholder": "User-agent: *\nDisallow: /admin",
+            "home_title": "Басты бет тақырыбы",
+            "home_meta_description": "Басты бет сипаттамасы",
+            "blog_index_title": "«Блог» бөлімінің тақырыбы",
+            "blog_index_meta_description": "«Блог» бөлімінің сипаттамасы",
+            "projects_index_title": "«Жобалар» бөлімінің тақырыбы",
+            "projects_index_meta_description": "«Жобалар» бөлімінің сипаттамасы",
+            "phone": "Телефон",
+            "address": "Мекенжай",
+            "logo": "Логотип",
+            "favicon": "Фавикон",
+            "upload_logo": "Логотип жүктеу",
+            "upload_favicon": "Фавикон жүктеу",
+            "remove_logo": "Логотипті жою",
+            "remove_favicon": "Фавиконды жою",
+            "saved": "Сайт баптаулары сақталды",
+            "save": "Баптауларды сақтау",
+            "maintenance": "Қызмет көрсету режимі",
+            "maintenance_description": "Көрсетушілерге қоғамдық сайт орнына қызмет көрсету бетін көрсетеді. Әкімшілер сайтты көре береді.",
+            "maintenance_enabled": "Қосулы",
+            "maintenance_disabled": "Өшірулі",
+            "maintenance_preview": "Бетті алдын ала қарау",
+            "no_file": "Файл таңдалмаған",
+            "choose_file": "Файлды таңдау",
+            "social_networks": {
+                "facebook": "Facebook",
+                "instagram": "Instagram",
+                "telegram": "Telegram",
+                "whatsapp": "WhatsApp",
+                "youtube": "YouTube",
+                "tiktok": "TikTok"
+            }
+        },
+        "categories": {
+            "title": "Санаттар",
+            "description": "Блог санаттарын басқару",
+            "form_description": "Әр тілдегі атау және санат иконкасы",
+            "create": "Санат құру",
+            "edit": "Санатты өңдеу",
+            "save": "Сақтау",
+            "cancel": "Болдырмау",
+            "name": "Атауы",
+            "names": "Атаулар",
+            "icon": "Иконка",
+            "slug": "URL",
+            "status": "Күйі",
+            "actions": "Әрекеттер",
+            "active": "Белсенді",
+            "inactive": "Белсенді емес",
+            "sort_order": "Реті",
+            "empty": "Санаттар жоқ"
+        },
+        "blog": {
+            "title": "Блогтар",
+            "description": "Блог жазбаларын басқару",
+            "form_description": "Тақырып, сипаттама, баннер және жариялау күйі",
+            "create": "Жазба құру",
+            "edit": "Жазбаны өңдеу",
+            "save": "Сақтау",
+            "post_title": "Атауы",
+            "content": "Мазмұн",
+            "general": "Негізгі",
+            "body": "Сипаттама",
+            "banner": "Баннер",
+            "remove_banner": "Баннерді жою",
+            "date": "Жариялау күні",
+            "status": "Күйі",
+            "slug": "URL",
+            "meta_title": "SEO тақырыбы",
+            "meta_description": "SEO сипаттамасы",
+            "seo_section": "SEO",
+            "meta_title_hint": "Бос болса — жазба атауы қолданылады",
+            "meta_description_hint": "Бос болса — мазмұннан қысқаша сипаттама",
+            "no_category": "Санатсыз",
+            "empty": "Жазбалар жоқ",
+            "search_icon": "Иконка іздеу",
+            "statuses": {
+                "draft": "Жоба",
+                "published": "Жарияланған"
+            }
+        },
+        "project_categories": {
+            "title": "Жоба санаттары",
+            "description": "Жұмыс санаттарын басқару",
+            "form_description": "Әр тілдегі атау және санат иконкасы",
+            "create": "Санат құру",
+            "edit": "Санатты өңдеу",
+            "save": "Сақтау",
+            "cancel": "Болдырмау",
+            "name": "Атауы",
+            "names": "Атаулар",
+            "icon": "Иконка",
+            "slug": "URL",
+            "status": "Күйі",
+            "actions": "Әрекеттер",
+            "active": "Белсенді",
+            "inactive": "Белсенді емес",
+            "sort_order": "Реті",
+            "empty": "Санаттар жоқ"
+        },
+        "projects": {
+            "title": "Жобалар",
+            "description": "Біздің жұмыстарды басқару",
+            "form_description": "Атау, сипаттама, баннер және жариялау күйі",
+            "create": "Жоба құру",
+            "edit": "Жобаны өңдеу",
+            "save": "Сақтау",
+            "project_title": "Атауы",
+            "content": "Мазмұн",
+            "general": "Негізгі",
+            "body": "Сипаттама",
+            "banner": "Баннер",
+            "remove_banner": "Баннерді жою",
+            "date": "Жариялау күні",
+            "status": "Күйі",
+            "slug": "URL",
+            "meta_title": "SEO тақырыбы",
+            "meta_description": "SEO сипаттамасы",
+            "seo_section": "SEO",
+            "meta_title_hint": "Бос болса — жоба атауы қолданылады",
+            "meta_description_hint": "Бос болса — мазмұннан қысқаша сипаттама",
+            "no_category": "Санатсыз",
+            "empty": "Жобалар жоқ",
+            "search_icon": "Иконка іздеу",
+            "statuses": {
+                "draft": "Жоба",
+                "published": "Жарияланған"
+            }
+        },
+        "sales": {
+            "statuses": {
+                "active": "Белсенді",
+                "inactive": "Белсенді емес"
+            },
+            "order_statuses": {
+                "completed": "Аяқталды",
+                "cancelled": "Бас тартылды"
+            },
+            "products": {
+                "title": "Тауарлар",
+                "description": "Сатуға арналған тауарлар каталогы",
+                "create": "Тауар қосу",
+                "edit": "Тауарды өңдеу",
+                "form_description": "Атауы, бағасы, қалдығы және Kaspi сілтемесі",
+                "name": "Атауы",
+                "short_description": "Қысқаша сипаттама",
+                "price": "Бағасы",
+                "quantity": "Саны",
+                "unit": "Өлш. бірл.",
+                "status": "Күйі",
+                "kaspi_link": "Kaspi сілтемесі",
+                "image": "Сурет",
+                "choose_file": "Файл таңдау",
+                "remove_image": "Суретті жою",
+                "save": "Сақтау",
+                "empty": "Тауарлар жоқ"
+            },
+            "services": {
+                "title": "Қызметтер",
+                "description": "Сатуға арналған қызметтер каталогы",
+                "create": "Қызмет қосу",
+                "edit": "Қызметті өңдеу",
+                "form_description": "Атауы, бағасы және күйі",
+                "name": "Атауы",
+                "price": "Бағасы",
+                "status": "Күйі",
+                "save": "Сақтау",
+                "empty": "Қызметтер жоқ"
+            },
+            "clients": {
+                "title": "Клиенттер",
+                "description": "Клиенттер базасы",
+                "create": "Клиент қосу",
+                "edit": "Клиентті өңдеу",
+                "form_description": "ТАӘ және телефон нөмірі",
+                "full_name": "ТАӘ",
+                "phone": "Телефон",
+                "orders_count": "Тапсырыстар",
+                "save": "Сақтау",
+                "empty": "Клиенттер жоқ",
+                "cannot_delete_store": "«Магазин» жүйелік клиентін жоюға болмайды"
+            },
+            "orders": {
+                "title": "Тапсырыстар",
+                "description": "Тапсырыстарды құру және басқару",
+                "create": "Тапсырыс құру",
+                "edit": "Тапсырысты өңдеу",
+                "form_description": "Клиентті таңдап, тауар немесе қызмет қосыңыз",
+                "client": "Клиент",
+                "ordered_at": "Тапсырыс күні",
+                "status": "Күйі",
+                "notes": "Пікір",
+                "items": "Позициялар",
+                "add_item": "Позиция қосу",
+                "item_name": "Атауы",
+                "quantity": "Саны",
+                "unit": "Өлш.",
+                "unit_price": "Бағасы",
+                "line_total": "Сома",
+                "total": "Барлығы",
+                "items_count": "Позициялар",
+                "save": "Сақтау",
+                "empty": "Тапсырыстар жоқ",
+                "catalog_title": "Каталогтан қосу",
+                "products_tab": "Тауарлар",
+                "services_tab": "Қызметтер",
+                "remove_item": "Жою",
+                "select_client": "Клиентті таңдаңыз",
+                "date": "Тапсырыс күні",
+                "item_quantity": "Саны",
+                "item_unit_price": "Бағасы",
+                "item_line_total": "Сома",
+                "no_items": "Кем дегенде бір позиция қосыңыз",
+                "pick_catalog": "Каталогтан таңдау"
+            },
+            "reports": {
+                "title": "Есептер",
+                "description": "Таңдалған кезеңдегі сату статистикасы",
+                "orders_count": "Тапсырыстар",
+                "revenue": "Табыс",
+                "products_revenue": "Тауарлар",
+                "services_revenue": "Қызметтер",
+                "chart_title": "Сату динамикасы",
+                "chart": "Сату динамикасы",
+                "range": "Кезең",
+                "no_data": "Таңдалған кезеңде деректер жоқ",
+                "from": "Бастап",
+                "to": "Дейін",
+                "apply": "Қолдану",
+                "periods": {
+                    "week": "Апта",
+                    "month": "Ай",
+                    "quarter": "Тоқсан",
+                    "half_year": "Жарты жыл",
+                    "year": "Жыл",
+                    "custom": "Кезең"
+                }
+            },
+            "actions": "Әрекеттер",
+            "save": "Сақтау",
+            "cancel": "Болдырмау"
+        }
+    },
+    "site": {
+        "home_title": "Басты бет",
+        "hero": {
+            "eyebrow": "Түркістан · толық циклды IT-компания",
+            "tagline": "Техниканы жөндейміз, құжаттарды басып шығарамыз және цифрлық өнімдер жасаймыз — бәрі бір жерде.",
+            "description": "Сервис орталығы, типография және әзірлеу студиясы: Түркістандағы бизнес тапсырмаларына сайттар, қосымшалар және интернет-дүкендер.",
+            "tags_label": "Бағыттар",
+            "tags": {
+                "pc_repair": "ДК жөндеу",
+                "printing": "Басып шығару",
+                "web": "Веб-әзірлеу",
+                "mobile": "Мобильді қосымшалар"
+            }
+        },
+        "services": {
+            "subtitle": "БІЗДІҢ ҚЫЗМЕТТЕР",
+            "title_line1": "Бизнес пен",
+            "title_line2": "күнделікті міндеттер үшін",
+            "lead": "Құжат басып шығарудан сайт пен мобильді қосымшаларды іске қосуға дейін — техникалық тапсырмаларды бір жерде шешеміз.",
+            "cards": {
+                "print": {
+                    "title": "Компьютерлік қызметтер",
+                    "description": "Басып шығару, көшіру, түйреу және материалдарды дайындау — оқу, кеңсе және бизнес үшін жылдам, ұқыпты және қажет форматта.",
+                    "tags": {
+                        "printing": "Басып шығару",
+                        "copy": "Көшіру",
+                        "binding": "Түйреу",
+                        "cards": "Визиткалар",
+                        "presentations": "Презентациялар"
+                    }
+                },
+                "repair": {
+                    "title": "Техника жөндеу",
+                    "description": "Компьютерлерді, ноутбуктарды және принтерлерді диагностикалау және жөндеу. Құрылғылардың жұмысын қалпына келтіреміз және қызмет ету мерзімін ұзартамыз.",
+                    "tags": {
+                        "pc": "ДК жөндеу",
+                        "laptops": "Ноутбуктар",
+                        "printers": "Принтерлер",
+                        "setup": "Баптау",
+                        "cleaning": "Тазалау"
+                    }
+                },
+                "web": {
+                    "title": "Веб-әзірлеу",
+                    "description": "Сайттар, лендингтер, интернет-дүкендер және боттар жасаймыз — идеядан іске қосуға дейін түсінікті құрылым және заманауи дизайнмен.",
+                    "tags": {
+                        "sites": "Сайттар",
+                        "bots": "Боттар",
+                        "shops": "Интернет-дүкендер",
+                        "landings": "Лендингтер",
+                        "crm": "CRM"
+                    }
+                },
+                "mobile": {
+                    "title": "Мобильді әзірлеу",
+                    "description": "iOS және Android үшін мобильді қосымшалар әзірлейміз — ыңғайлы, жылдам және пайдаланушылардың нақты тапсырмаларына бағытталған.",
+                    "tags": {
+                        "ios": "iOS",
+                        "android": "Android",
+                        "mvp": "MVP",
+                        "uiux": "UI/UX",
+                        "support": "Қолдау"
+                    }
+                }
+            }
+        },
+        "slider": {
+            "cases_nav": "Кейстер бойынша навигация",
+            "cases_prev": "Алдыңғы кейс",
+            "cases_next": "Келесі кейс",
+            "blog_nav": "Мақалалар бойынша навигация",
+            "blog_prev": "Алдыңғы мақала",
+            "blog_next": "Келесі мақала"
+        },
+        "footer": {
+            "copyright": "Барлық құқықтар қорғалған.",
+            "scroll_top": "Жоғарыға"
+        },
+        "nav": {
+            "about": "Біз туралы",
+            "services": "Қызметтер",
+            "contacts": "Байланыс",
+            "blog": "Блог",
+            "projects": "Жобалар"
+        },
+        "blog": {
+            "index_title": "Блог",
+            "eyebrow": "Блог",
+            "title_prefix": "Пайдалы",
+            "title_accent": "материалдар",
+            "lead": "Бизнес пен күнделікті міндеттер үшін техника, әзірлеу және цифрлық құралдар бойынша кеңестер.",
+            "read_more": "Мақаланы оқу",
+            "back": "Барлық мақалалар",
+            "empty": "Мақалалар жоқ"
+        },
+        "projects": {
+            "index_title": "Жобалар",
+            "eyebrow": "Кейстер",
+            "title_prefix": "Біздің",
+            "title_accent": "жұмыстар",
+            "lead": "Біз жасаған нақты жобалар — Түркістандағы бизнес үшін сайттар, қосымшалар және цифрлық сервистер.",
+            "view": "Жобаны көру",
+            "back": "Барлық жобалар",
+            "empty": "Жобалар жоқ"
+        },
+        "not_found": {
+            "title": "Бет табылмады",
+            "eyebrow": "Қате",
+            "heading": "Бет табылмады",
+            "description": "Сілтеме ескірген немесе мекенжай қате енгізілген сияқты. Басты бетке оралыңыз немесе қызметтерімізге өтіңіз.",
+            "home": "Басты бетке",
+            "services": "Қызметтеріміз"
+        },
+        "maintenance": {
+            "title": "Қызмет көрсету режимі",
+            "eyebrow": "Қызмет көрсету режимі",
+            "heading": "Сайт уақытша<br>қолжетімсіз",
+            "description": "Біз сервистерді жаңартып, платформаны жақсартамыз. Жақында бәрі қайта жұмыс істейді — ал қазір тікелей хабарласуға болады.",
+            "progress_label": "Жаңарту жүріп жатыр",
+            "note": "Кеңсе мен сервис орталығы әдеттегі режимде жұмыс істейді."
+        },
+        "office": {
+            "eyebrow": "Біздің кеңсе",
+            "title_prefix": "Кеңсеміз",
+            "title_accent": "Түркістанда",
+            "lead": "Сервис орталығы, типография және әзірлеу студиясы — жеке келіңіз немесе ыңғайлы мессенджер арқылы хабарласыңыз.",
+            "status": "Ашық · демалыссыз 9:00–18:00",
+            "phone_label": "Телефон",
+            "phone_hint": "Жөндеу, басып шығару және әзірлеу мәселелері бойынша хабарласыңыз",
+            "phone_fallback": "Телефонды әкімшіден нақтылаңыз",
+            "address_label": "Мекенжай",
+            "address_fallback": "Мекенжайды әкімшіден нақтылаңыз",
+            "social_label": "Әлеуметтік желілер",
+            "map_label": "Маршрут",
+            "map_action": "2ГИС-те ашу",
+            "map_hint": "Кеңсеге картада маршрут құру",
+            "image_alt": ":name кеңсесінің кіреберісі"
+        }
+    }
+}

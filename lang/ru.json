@@ -1,0 +1,577 @@
+{
+    "roles": {
+        "admin": "Администратор",
+        "user": "Пользователь"
+    },
+    "nav": {
+        "dashboard": "Сводка",
+        "languages": "Языки",
+        "site_settings": "Настройки сайта",
+        "platform": "Меню",
+        "settings": "Профиль",
+        "log_out": "Выйти",
+        "log_in": "Войти",
+        "blog": "Блог",
+        "blog_posts": "Блоги",
+        "blog_categories": "Категории",
+        "works": "Наши работы",
+        "projects": "Проекты",
+        "project_categories": "Категории",
+        "sales": "Продажи",
+        "sales_orders": "Заказы",
+        "sales_products": "Товары",
+        "sales_services": "Услуги",
+        "sales_clients": "Клиенты",
+        "sales_reports": "Отчёты"
+    },
+    "welcome": {
+        "title": "Добро пожаловать",
+        "get_started": "Начнём"
+    },
+    "pagination": {
+        "summary": "Показано :from–:to из :total",
+        "previous": "Назад",
+        "next": "Вперёд"
+    },
+    "dashboard": {
+        "title": "Сводка",
+        "description_admin": "Ключевые показатели за :from — :to",
+        "description_user": "Добро пожаловать, :name",
+        "user_welcome": "Здравствуйте, :name",
+        "user_hint": "У вас нет доступа к разделам управления. Перейдите в профиль, чтобы обновить данные аккаунта.",
+        "kpi": {
+            "revenue": "Выручка за месяц",
+            "orders": "Заказов за месяц",
+            "average_order": "Средний чек",
+            "clients": "Клиентов",
+            "clients_hint": "Без системного «Магазин»",
+            "vs_last_month": "к прошлому месяцу"
+        },
+        "trend": {
+            "no_change": "без изменений",
+            "new": "новые данные"
+        },
+        "chart": {
+            "title": "Динамика выручки",
+            "subtitle": "Последние 30 дней",
+            "empty": "Пока нет завершённых заказов"
+        },
+        "sales_breakdown": {
+            "products": "Товары за месяц",
+            "services": "Услуги за месяц"
+        },
+        "catalog": {
+            "title": "Каталог",
+            "products": "Активные товары",
+            "services": "Активные услуги",
+            "clients": "Клиенты"
+        },
+        "content": {
+            "title": "Контент",
+            "blog": "Блог (опубликовано)",
+            "projects": "Проекты (опубликовано)",
+            "drafts": "Черновики"
+        },
+        "site": {
+            "title": "Статус сайта",
+            "maintenance_on": "Включён режим обслуживания — публичный сайт недоступен.",
+            "maintenance_off": "Сайт работает в обычном режиме."
+        },
+        "recent_orders": {
+            "title": "Последние заказы",
+            "all": "Все заказы",
+            "client": "Клиент",
+            "date": "Дата",
+            "total": "Сумма",
+            "status": "Статус",
+            "empty": "Заказов пока нет"
+        },
+        "actions": {
+            "title": "Быстрые действия",
+            "new_order": "Новый заказ",
+            "new_post": "Новая статья",
+            "new_project": "Новый проект",
+            "reports": "Отчёты",
+            "site_settings": "Настройки сайта"
+        }
+    },
+    "auth": {
+        "login": {
+            "title": "Вход в аккаунт",
+            "description": "Введите имя пользователя и пароль",
+            "page_title": "Вход",
+            "username": "Имя пользователя",
+            "password": "Пароль",
+            "remember": "Запомнить меня",
+            "submit": "Войти",
+            "password_placeholder": "Пароль"
+        },
+        "verify_email": {
+            "title": "Подтверждение email",
+            "description": "Подтвердите адрес электронной почты, перейдя по ссылке из письма.",
+            "page_title": "Подтверждение email",
+            "resend": "Отправить письмо повторно",
+            "link_sent": "Новая ссылка для подтверждения отправлена на ваш email."
+        },
+        "confirm_password": {
+            "title": "Подтвердите пароль",
+            "description": "Это защищённая область. Подтвердите пароль, чтобы продолжить.",
+            "page_title": "Подтверждение пароля",
+            "password": "Пароль",
+            "submit": "Подтвердить"
+        }
+    },
+    "settings": {
+        "title": "Настройки",
+        "description": "Управление профилем и настройками аккаунта",
+        "profile": "Профиль",
+        "password": "Пароль",
+        "appearance": "Оформление",
+        "saved": "Сохранено",
+        "save": "Сохранить",
+        "profile_settings": "Настройки профиля",
+        "profile_information": "Информация профиля",
+        "profile_information_description": "Обновите имя и email",
+        "name": "Имя",
+        "name_placeholder": "Полное имя",
+        "email": "Email",
+        "email_placeholder": "Адрес электронной почты",
+        "email_unverified": "Ваш email не подтверждён.",
+        "resend_verification": "Отправить письмо подтверждения повторно",
+        "verification_link_sent": "Новая ссылка для подтверждения отправлена на ваш email.",
+        "password_settings": "Настройки пароля",
+        "update_password": "Обновить пароль",
+        "update_password_description": "Используйте длинный случайный пароль для безопасности",
+        "current_password": "Текущий пароль",
+        "current_password_placeholder": "Текущий пароль",
+        "new_password": "Новый пароль",
+        "new_password_placeholder": "Новый пароль",
+        "confirm_password": "Подтвердите пароль",
+        "confirm_password_placeholder": "Подтвердите пароль",
+        "save_password": "Сохранить пароль",
+        "appearance_settings": "Оформление",
+        "appearance_description": "Настройте внешний вид приложения",
+        "theme_light": "Светлая",
+        "theme_dark": "Тёмная",
+        "theme_system": "Системная",
+        "delete_account": "Удалить аккаунт",
+        "delete_account_description": "Удалить аккаунт и все связанные данные",
+        "warning": "Внимание",
+        "delete_warning": "Действие необратимо. Будьте осторожны.",
+        "delete_confirm_title": "Вы уверены, что хотите удалить аккаунт?",
+        "delete_confirm_description": "После удаления все данные будут безвозвратно удалены. Введите пароль для подтверждения.",
+        "cancel": "Отмена"
+    },
+    "admin": {
+        "languages": {
+            "title": "Языки",
+            "description": "Управление языками интерфейса",
+            "code": "Код",
+            "name": "Название",
+            "file": "Файл переводов",
+            "file_hint": "Переводы редактируются в файле"
+        },
+        "site": {
+            "title": "Настройки сайта",
+            "description": "SEO, брендинг и контактная информация",
+            "general": "Общие",
+            "seo": "SEO",
+            "contacts": "Контакты",
+            "social": "Соцсети",
+            "branding": "Брендинг",
+            "site_name": "Название сайта",
+            "meta_description": "Описание (meta description)",
+            "meta_keywords": "Ключевые слова (meta keywords)",
+            "seo_description": "Шаблоны заголовков, Open Graph, индексация и карта сайта",
+            "title_separator": "Разделитель в заголовке",
+            "default_robots": "Robots по умолчанию",
+            "twitter_handle": "Twitter / X",
+            "google_verification": "Google Search Console",
+            "yandex_verification": "Яндекс.Вебмастер",
+            "sitemap_enabled": "Карта сайта (sitemap.xml)",
+            "sitemap_enabled_hint": "Генерировать sitemap.xml для поисковых систем",
+            "og_image": "OG-изображение по умолчанию",
+            "robots_txt": "robots.txt",
+            "robots_txt_placeholder": "User-agent: *\nDisallow: /admin",
+            "home_title": "Заголовок главной",
+            "home_meta_description": "Описание главной",
+            "blog_index_title": "Заголовок раздела «Блог»",
+            "blog_index_meta_description": "Описание раздела «Блог»",
+            "projects_index_title": "Заголовок раздела «Проекты»",
+            "projects_index_meta_description": "Описание раздела «Проекты»",
+            "phone": "Телефон",
+            "address": "Адрес",
+            "logo": "Логотип",
+            "favicon": "Фавикон",
+            "upload_logo": "Загрузить логотип",
+            "upload_favicon": "Загрузить фавикон",
+            "remove_logo": "Удалить логотип",
+            "remove_favicon": "Удалить фавикон",
+            "saved": "Настройки сайта сохранены",
+            "save": "Сохранить настройки",
+            "maintenance": "Режим обслуживания",
+            "maintenance_description": "Показывает посетителям страницу обслуживания вместо публичного сайта. Администраторы по-прежнему видят сайт.",
+            "maintenance_enabled": "Включён",
+            "maintenance_disabled": "Выключен",
+            "maintenance_preview": "Предпросмотр страницы",
+            "no_file": "Файл не выбран",
+            "choose_file": "Выберите файл",
+            "social_networks": {
+                "facebook": "Facebook",
+                "instagram": "Instagram",
+                "telegram": "Telegram",
+                "whatsapp": "WhatsApp",
+                "youtube": "YouTube",
+                "tiktok": "TikTok"
+            }
+        },
+        "categories": {
+            "title": "Категории",
+            "description": "Управление категориями блога",
+            "form_description": "Название на каждом языке и иконка категории",
+            "create": "Создать категорию",
+            "edit": "Редактировать категорию",
+            "save": "Сохранить",
+            "cancel": "Отмена",
+            "name": "Название",
+            "names": "Названия",
+            "icon": "Иконка",
+            "slug": "URL",
+            "status": "Статус",
+            "actions": "Действия",
+            "active": "Активна",
+            "inactive": "Неактивна",
+            "sort_order": "Порядок",
+            "empty": "Категорий пока нет"
+        },
+        "blog": {
+            "title": "Блоги",
+            "description": "Управление записями блога",
+            "form_description": "Заголовок, описание, баннер и статус публикации",
+            "create": "Создать запись",
+            "edit": "Редактировать запись",
+            "save": "Сохранить",
+            "post_title": "Название",
+            "content": "Контент",
+            "general": "Основное",
+            "body": "Описание",
+            "banner": "Баннер",
+            "remove_banner": "Удалить баннер",
+            "date": "Дата публикации",
+            "status": "Статус",
+            "slug": "URL",
+            "meta_title": "SEO-заголовок",
+            "meta_description": "SEO-описание",
+            "seo_section": "SEO",
+            "meta_title_hint": "Если пусто — используется название записи",
+            "meta_description_hint": "Если пусто — краткое описание из контента",
+            "no_category": "Без категории",
+            "empty": "Записей пока нет",
+            "search_icon": "Поиск иконки",
+            "statuses": {
+                "draft": "Черновик",
+                "published": "Опубликован"
+            }
+        },
+        "project_categories": {
+            "title": "Категории проектов",
+            "description": "Управление категориями работ",
+            "form_description": "Название на каждом языке и иконка категории",
+            "create": "Создать категорию",
+            "edit": "Редактировать категорию",
+            "save": "Сохранить",
+            "cancel": "Отмена",
+            "name": "Название",
+            "names": "Названия",
+            "icon": "Иконка",
+            "slug": "URL",
+            "status": "Статус",
+            "actions": "Действия",
+            "active": "Активна",
+            "inactive": "Неактивна",
+            "sort_order": "Порядок",
+            "empty": "Категорий пока нет"
+        },
+        "projects": {
+            "title": "Проекты",
+            "description": "Управление нашими работами",
+            "form_description": "Название, описание, баннер и статус публикации",
+            "create": "Создать проект",
+            "edit": "Редактировать проект",
+            "save": "Сохранить",
+            "project_title": "Название",
+            "content": "Контент",
+            "general": "Основное",
+            "body": "Описание",
+            "banner": "Баннер",
+            "remove_banner": "Удалить баннер",
+            "date": "Дата публикации",
+            "status": "Статус",
+            "slug": "URL",
+            "meta_title": "SEO-заголовок",
+            "meta_description": "SEO-описание",
+            "seo_section": "SEO",
+            "meta_title_hint": "Если пусто — используется название проекта",
+            "meta_description_hint": "Если пусто — краткое описание из контента",
+            "no_category": "Без категории",
+            "empty": "Проектов пока нет",
+            "search_icon": "Поиск иконки",
+            "statuses": {
+                "draft": "Черновик",
+                "published": "Опубликован"
+            }
+        },
+        "sales": {
+            "statuses": {
+                "active": "Активен",
+                "inactive": "Неактивен"
+            },
+            "order_statuses": {
+                "completed": "Завершён",
+                "cancelled": "Отменён"
+            },
+            "products": {
+                "title": "Товары",
+                "description": "Каталог товаров для продаж",
+                "create": "Добавить товар",
+                "edit": "Редактировать товар",
+                "form_description": "Название, цена, остаток и ссылка на Kaspi",
+                "name": "Название",
+                "short_description": "Краткое описание",
+                "price": "Цена",
+                "quantity": "Количество",
+                "unit": "Ед. изм.",
+                "status": "Статус",
+                "kaspi_link": "Ссылка на Kaspi",
+                "image": "Изображение",
+                "choose_file": "Выберите файл",
+                "remove_image": "Удалить изображение",
+                "save": "Сохранить",
+                "empty": "Товаров пока нет"
+            },
+            "services": {
+                "title": "Услуги",
+                "description": "Каталог услуг для продаж",
+                "create": "Добавить услугу",
+                "edit": "Редактировать услугу",
+                "form_description": "Название, цена и статус",
+                "name": "Название",
+                "price": "Цена",
+                "status": "Статус",
+                "save": "Сохранить",
+                "empty": "Услуг пока нет"
+            },
+            "clients": {
+                "title": "Клиенты",
+                "description": "База клиентов",
+                "create": "Добавить клиента",
+                "edit": "Редактировать клиента",
+                "form_description": "ФИО и номер телефона",
+                "full_name": "ФИО",
+                "phone": "Телефон",
+                "orders_count": "Заказов",
+                "save": "Сохранить",
+                "empty": "Клиентов пока нет",
+                "cannot_delete_store": "Системного клиента «Магазин» нельзя удалить"
+            },
+            "orders": {
+                "title": "Заказы",
+                "description": "Создание и управление заказами",
+                "create": "Создать заказ",
+                "edit": "Редактировать заказ",
+                "form_description": "Выберите клиента и добавьте товары или услуги",
+                "client": "Клиент",
+                "ordered_at": "Дата заказа",
+                "status": "Статус",
+                "notes": "Комментарий",
+                "items": "Позиции",
+                "add_item": "Добавить позицию",
+                "item_name": "Название",
+                "quantity": "Кол-во",
+                "unit": "Ед.",
+                "unit_price": "Цена",
+                "line_total": "Сумма",
+                "total": "Итого",
+                "items_count": "Позиций",
+                "save": "Сохранить",
+                "empty": "Заказов пока нет",
+                "catalog_title": "Добавить из каталога",
+                "products_tab": "Товары",
+                "services_tab": "Услуги",
+                "remove_item": "Удалить",
+                "select_client": "Выберите клиента",
+                "date": "Дата заказа",
+                "item_quantity": "Кол-во",
+                "item_unit_price": "Цена",
+                "item_line_total": "Сумма",
+                "no_items": "Добавьте хотя бы одну позицию",
+                "pick_catalog": "Выбор из каталога"
+            },
+            "reports": {
+                "title": "Отчёты",
+                "description": "Статистика продаж за выбранный период",
+                "orders_count": "Заказов",
+                "revenue": "Выручка",
+                "products_revenue": "Товары",
+                "services_revenue": "Услуги",
+                "chart_title": "Динамика продаж",
+                "chart": "Динамика продаж",
+                "range": "Период",
+                "no_data": "Нет данных за выбранный период",
+                "from": "С",
+                "to": "По",
+                "apply": "Применить",
+                "periods": {
+                    "week": "Неделя",
+                    "month": "Месяц",
+                    "quarter": "Квартал",
+                    "half_year": "Полгода",
+                    "year": "Год",
+                    "custom": "Период"
+                }
+            },
+            "actions": "Действия",
+            "save": "Сохранить",
+            "cancel": "Отмена"
+        }
+    },
+    "site": {
+        "home_title": "Главная",
+        "hero": {
+            "eyebrow": "Туркестан · IT-компания полного цикла",
+            "tagline": "Ремонтируем технику, печатаем документы и создаём цифровые продукты — всё в одном месте.",
+            "description": "Сервисный центр, типография и студия разработки: сайты, приложения и интернет-магазины под задачи бизнеса в Туркестане.",
+            "tags_label": "Направления",
+            "tags": {
+                "pc_repair": "Ремонт ПК",
+                "printing": "Печать",
+                "web": "Веб-разработка",
+                "mobile": "Мобильные приложения"
+            }
+        },
+        "services": {
+            "subtitle": "НАШИ УСЛУГИ",
+            "title_line1": "Всё для бизнеса",
+            "title_line2": "и повседневных задач",
+            "lead": "От распечатки документов до запуска сайтов и мобильных приложений — закрываем технические задачи в одном месте.",
+            "cards": {
+                "print": {
+                    "title": "Компьютерные услуги",
+                    "description": "Печать, ксерокопия, переплёт и подготовка материалов — быстро, аккуратно и в нужном формате для учёбы, офиса и бизнеса.",
+                    "tags": {
+                        "printing": "Распечатка",
+                        "copy": "Ксерокопия",
+                        "binding": "Переплёт",
+                        "cards": "Визитки",
+                        "presentations": "Презентации"
+                    }
+                },
+                "repair": {
+                    "title": "Ремонт техники",
+                    "description": "Диагностика и ремонт компьютеров, ноутбуков и принтеров. Восстанавливаем работу устройств и помогаем продлить срок их службы.",
+                    "tags": {
+                        "pc": "Ремонт ПК",
+                        "laptops": "Ноутбуки",
+                        "printers": "Принтеры",
+                        "setup": "Настройка",
+                        "cleaning": "Чистка"
+                    }
+                },
+                "web": {
+                    "title": "Веб-разработка",
+                    "description": "Создаём сайты, лендинги, интернет-магазины и ботов — от идеи до запуска с понятной структурой и современным дизайном.",
+                    "tags": {
+                        "sites": "Сайты",
+                        "bots": "Боты",
+                        "shops": "Интернет-магазины",
+                        "landings": "Лендинги",
+                        "crm": "CRM"
+                    }
+                },
+                "mobile": {
+                    "title": "Мобильная разработка",
+                    "description": "Разрабатываем мобильные приложения под iOS и Android — удобные, быстрые и заточенные под реальные задачи ваших пользователей.",
+                    "tags": {
+                        "ios": "iOS",
+                        "android": "Android",
+                        "mvp": "MVP",
+                        "uiux": "UI/UX",
+                        "support": "Поддержка"
+                    }
+                }
+            }
+        },
+        "slider": {
+            "cases_nav": "Навигация по кейсам",
+            "cases_prev": "Предыдущий кейс",
+            "cases_next": "Следующий кейс",
+            "blog_nav": "Навигация по статьям",
+            "blog_prev": "Предыдущая статья",
+            "blog_next": "Следующая статья"
+        },
+        "footer": {
+            "copyright": "Все права защищены.",
+            "scroll_top": "Наверх"
+        },
+        "nav": {
+            "about": "О нас",
+            "services": "Услуги",
+            "contacts": "Контакты",
+            "blog": "Блог",
+            "projects": "Проекты"
+        },
+        "blog": {
+            "index_title": "Блог",
+            "eyebrow": "Блог",
+            "title_prefix": "Полезные",
+            "title_accent": "материалы",
+            "lead": "Советы по технике, разработке и цифровым инструментам для бизнеса и повседневных задач.",
+            "read_more": "Читать статью",
+            "back": "Все статьи",
+            "empty": "Статей пока нет"
+        },
+        "projects": {
+            "index_title": "Проекты",
+            "eyebrow": "Кейсы",
+            "title_prefix": "Наши",
+            "title_accent": "работы",
+            "lead": "Реальные проекты, которые мы уже сделали — сайты, приложения и цифровые сервисы для бизнеса в Туркестане.",
+            "view": "Посмотреть проект",
+            "back": "Все проекты",
+            "empty": "Проектов пока нет"
+        },
+        "not_found": {
+            "title": "Страница не найдена",
+            "eyebrow": "Ошибка",
+            "heading": "Страница не найдена",
+            "description": "Похоже, ссылка устарела или адрес введён с ошибкой. Вернитесь на главную или перейдите к нашим услугам.",
+            "home": "На главную",
+            "services": "Наши услуги"
+        },
+        "maintenance": {
+            "title": "Режим обслуживания",
+            "eyebrow": "Режим обслуживания",
+            "heading": "Сайт временно<br>недоступен",
+            "description": "Мы обновляем сервисы и улучшаем платформу. Совсем скоро всё снова заработает — а пока вы можете связаться с нами напрямую.",
+            "progress_label": "Обновление в процессе",
+            "note": "Офис и сервисный центр работают в обычном режиме."
+        },
+        "office": {
+            "eyebrow": "Наш офис",
+            "title_prefix": "Ждем Вас В ",
+            "title_accent": "Туркестане",
+            "lead": "Сервисный центр, типография и студия разработки — приходите лично или свяжитесь онлайн в удобном мессенджере.",
+            "status": "Открыто · с 9:00 до 18:00 без выходных",
+            "phone_label": "Телефон",
+            "phone_hint": "Звоните по вопросам ремонта, печати и разработки",
+            "phone_fallback": "Телефон уточняйте у администратора",
+            "address_label": "Адрес",
+            "address_fallback": "Адрес уточняйте у администратора",
+            "social_label": "Соцсети",
+            "map_label": "Маршрут",
+            "map_action": "Открыть в 2ГИС",
+            "map_hint": "Построить маршрут до офиса на карте",
+            "image_alt": "Вход в офис :name"
+        }
+    }
+}

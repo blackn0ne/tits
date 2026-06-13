@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Requests\Admin;
+
+use App\Enums\ProjectStatus;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class StoreProjectRequest extends FormRequest
+{
+    protected function prepareForValidation(): void
+    {
+        if ($this->input('project_category_id') === '' || $this->input('project_category_id') === null) {
+            $this->merge(['project_category_id' => null]);
+        }
+    }
+
+    public function authorize(): bool
+    {
+        return $this->user()?->isAdmin() ?? false;
+    }
+
+    /**
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'project_category_id' => ['nullable', 'integer', Rule::exists('project_categories', 'id')],
+            'status' => ['required', Rule::enum(ProjectStatus::class)],
+            'published_at' => ['nullable', 'date'],
+            'banner' => ['nullable', 'image', 'max:4096'],
+            'translations' => ['required', 'array'],
+            'translations.*.language_id' => ['required', 'integer', Rule::exists('languages', 'id')],
+            'translations.*.title' => ['required', 'string', 'max:255'],
+            'translations.*.meta_title' => ['nullable', 'string', 'max:255'],
+            'translations.*.meta_description' => ['nullable', 'string', 'max:500'],
+            'translations.*.content' => ['nullable', 'string'],
+        ];
+    }
+}
