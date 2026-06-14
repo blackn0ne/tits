@@ -56,6 +56,20 @@
             .header-style-one .header-lang-btn--active {
                 box-shadow: inset 0 0 0 2px #98FF03;
             }
+            .mobile-menu-main .mobile-menu-actions {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 40px;
+                padding-top: 24px;
+                border-top: 1px solid #E5E7EB;
+            }
+            .mobile-menu-main .mobile-menu-actions .header-social-btn {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+            }
             .office-section__title,
             .blog-section__title,
             .cases-section__title {

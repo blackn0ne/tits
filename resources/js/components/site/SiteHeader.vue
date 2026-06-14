@@ -14,6 +14,7 @@ const page = usePage();
 
 const logoUrl = computed(() => site.value.logo_url ?? siteAsset('images/logo/01.svg'));
 const isHome = computed(() => page.component === 'site/Home');
+const languages = computed(() => page.props.languages ?? []);
 
 const socialNetworks = [
     { key: 'instagram', icon: 'fa-brands fa-instagram', label: 'Instagram' },
@@ -39,10 +40,13 @@ const contactsItem = computed(() => ({
 const handleAnchorClick = (hash: string, event?: Event): void => {
     if (isHome.value) {
         navigate(hash, event);
+        closeMobileMenu();
 
         return;
     }
 };
+
+const hasSocialLinks = computed(() => socialNetworks.some((network) => Boolean(site.value.social[network.key])));
 
 const toggleMobileMenu = (): void => {
     document.body.classList.toggle('mobile-menu-active');
@@ -197,6 +201,25 @@ onUnmounted(() => {
                                     </li>
                                 </ul>
                             </nav>
+                            <div
+                                v-if="hasSocialLinks || languages.length"
+                                class="social-wrapper-one mobile-menu-actions header-social-links"
+                            >
+                                <a
+                                    v-for="network in socialNetworks"
+                                    :key="`mobile-${network.key}`"
+                                    v-show="site.social[network.key]"
+                                    :href="site.social[network.key]!"
+                                    class="wpr-btn btn-primary header-social-btn"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    :aria-label="network.label"
+                                    @click="closeMobileMenu"
+                                >
+                                    <i :class="network.icon"></i>
+                                </a>
+                                <SiteLocaleSwitcher @switched="closeMobileMenu" />
+                            </div>
                         </div>
                     </div>
                 </div>

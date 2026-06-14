@@ -8,6 +8,10 @@ const page = usePage<SharedData>();
 const languages = computed(() => page.props.languages ?? []);
 const currentLocale = computed(() => page.props.locale);
 
+const emit = defineEmits<{
+    switched: [];
+}>();
+
 const localeLabel = (code: string): string => code.toUpperCase();
 
 const switchLocale = (code: string): void => {
@@ -22,9 +26,11 @@ const switchLocale = (code: string): void => {
             preserveScroll: true,
             preserveState: false,
             replace: true,
+            onFinish: () => emit('switched'),
         },
     );
 };
+
 </script>
 
 <template>
