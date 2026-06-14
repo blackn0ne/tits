@@ -66,13 +66,7 @@ class BlogPost extends Model
     #[Scope]
     protected function published(Builder $query): void
     {
-        $query
-            ->where('status', BlogPostStatus::Published)
-            ->where(function (Builder $builder): void {
-                $builder
-                    ->whereNull('published_at')
-                    ->orWhere('published_at', '<=', now());
-            });
+        $query->where('status', BlogPostStatus::Published);
     }
 
     #[Scope]
@@ -88,10 +82,6 @@ class BlogPost extends Model
     public function isVisibleOnSite(): bool
     {
         if ($this->status !== BlogPostStatus::Published) {
-            return false;
-        }
-
-        if ($this->published_at !== null && $this->published_at->isAfter(now())) {
             return false;
         }
 

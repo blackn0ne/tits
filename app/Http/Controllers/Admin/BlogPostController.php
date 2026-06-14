@@ -110,7 +110,7 @@ class BlogPostController extends Controller
                 'id' => $blogPost->id,
                 'blog_category_id' => $blogPost->blog_category_id,
                 'status' => $blogPost->status->value,
-                'published_at' => $blogPost->published_at?->format('Y-m-d\TH:i'),
+                'published_at' => $blogPost->published_at?->format('Y-m-d'),
                 'banner_url' => $blogPost->banner_path ? Storage::disk('public')->url($blogPost->banner_path) : null,
             ],
             'translationsByLanguage' => $this->translationsMap($blogPost),

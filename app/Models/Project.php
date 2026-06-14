@@ -66,13 +66,7 @@ class Project extends Model
     #[Scope]
     protected function published(Builder $query): void
     {
-        $query
-            ->where('status', ProjectStatus::Published)
-            ->where(function (Builder $builder): void {
-                $builder
-                    ->whereNull('published_at')
-                    ->orWhere('published_at', '<=', now());
-            });
+        $query->where('status', ProjectStatus::Published);
     }
 
     #[Scope]
@@ -87,14 +81,19 @@ class Project extends Model
 
     public function isVisibleOnSite(): bool
     {
+        return $this->siteVisibilityStatus() === 'visible';
+    }
+
+    public function siteVisibilityStatus(): string
+    {
         if ($this->status !== ProjectStatus::Published) {
-            return false;
+            return 'hidden';
         }
 
-        if ($this->published_at !== null && $this->published_at->isAfter(now())) {
-            return false;
+        if (! $this->translations()->where('title', '!=', '')->exists()) {
+            return 'hidden';
         }
 
-        return $this->translations()->where('title', '!=', '')->exists();
+        return 'visible';
     }
 }

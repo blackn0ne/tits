@@ -19,10 +19,6 @@ class UpdateProjectRequest extends FormRequest
         if ($this->input('published_at') === '') {
             $this->merge(['published_at' => null]);
         }
-
-        if ($this->input('status') === ProjectStatus::Published->value && blank($this->input('published_at'))) {
-            $this->merge(['published_at' => now()->toDateTimeString()]);
-        }
     }
 
     public function withValidator(Validator $validator): void

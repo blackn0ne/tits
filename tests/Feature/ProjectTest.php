@@ -7,6 +7,7 @@ use App\Models\ProjectCategory;
 use App\Models\ProjectCategoryTranslation;
 use App\Models\ProjectTranslation;
 use App\Models\User;
+use Carbon\Carbon;
 use Database\Seeders\LanguageSeeder;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -110,4 +111,35 @@ test('admin can update project', function () {
 
     expect($project->status)->toBe(ProjectStatus::Published)
         ->and($project->translations()->where('language_id', $ru->id)->value('title'))->toBe('Обновлённый проект');
+});
+
+test('published project is visible on site regardless of display date', function () {
+    Carbon::setTestNow('2026-06-14 10:00:00');
+
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+
+    $project = Project::factory()->published()->create([
+        'user_id' => $admin->id,
+        'published_at' => '2026-12-31 23:59:00',
+    ]);
+
+    ProjectTranslation::factory()->create([
+        'project_id' => $project->id,
+        'language_id' => $ru->id,
+        'title' => 'Проект с датой в будущем',
+        'slug' => 'proekt-s-datoj-v-budushchem',
+        'content' => '<p>Описание</p>',
+    ]);
+
+    expect($project->siteVisibilityStatus())->toBe('visible');
+
+    $this->get(route('projects.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('projects.data', 1)
+            ->where('projects.data.0.title', 'Проект с датой в будущем')
+        );
+
+    Carbon::setTestNow();
 });

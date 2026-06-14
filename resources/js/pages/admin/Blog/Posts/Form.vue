@@ -154,7 +154,8 @@ const submit = () => {
 
                         <div class="grid gap-2 md:col-span-2">
                             <Label for="published_at">{{ t('admin.blog.date') }}</Label>
-                            <Input id="published_at" v-model="form.published_at" type="datetime-local" />
+                            <Input id="published_at" v-model="form.published_at" type="date" />
+                            <p class="text-xs text-muted-foreground">{{ t('admin.blog.date_hint') }}</p>
                             <InputError :message="form.errors.published_at" />
                         </div>
                     </div>

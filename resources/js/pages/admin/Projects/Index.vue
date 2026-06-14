@@ -17,6 +17,7 @@ interface ProjectRow {
     status: string;
     status_label: string;
     published_at: string | null;
+    site_visibility: 'visible' | 'hidden';
     visible_on_site: boolean;
     category_name: string | null;
     banner_url: string | null;
@@ -27,6 +28,12 @@ defineProps<{
 }>();
 
 const { t } = useI18n();
+
+const visibilityLabel = (status: ProjectRow['site_visibility']) =>
+    status === 'visible' ? t('admin.projects.visible_on_site') : t('admin.projects.hidden_on_site');
+
+const visibilityClass = (status: ProjectRow['site_visibility']) =>
+    status === 'visible' ? 'bg-lime-100 text-lime-800' : 'bg-muted text-muted-foreground';
 
 const breadcrumbs = computed<BreadcrumbItem[]>(() => [
     { title: t('nav.works'), href: route('admin.projects.index') },
@@ -85,9 +92,9 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
                             <td class="px-4 py-3">
                                 <span
                                     class="inline-flex rounded-full px-2 py-0.5 text-xs"
-                                    :class="project.visible_on_site ? 'bg-lime-100 text-lime-800' : 'bg-muted text-muted-foreground'"
+                                    :class="visibilityClass(project.site_visibility)"
                                 >
-                                    {{ project.visible_on_site ? t('admin.projects.visible_on_site') : t('admin.projects.hidden_on_site') }}
+                                    {{ visibilityLabel(project.site_visibility) }}
                                 </span>
                             </td>
                             <td class="px-4 py-3">
