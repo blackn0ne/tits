@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Enums\ProjectStatus;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -13,6 +14,10 @@ class StoreProjectRequest extends FormRequest
         if ($this->input('project_category_id') === '' || $this->input('project_category_id') === null) {
             $this->merge(['project_category_id' => null]);
         }
+
+        if ($this->input('published_at') === '') {
+            $this->merge(['published_at' => null]);
+        }
     }
 
     public function authorize(): bool
@@ -21,7 +26,7 @@ class StoreProjectRequest extends FormRequest
     }
 
     /**
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
