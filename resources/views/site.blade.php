@@ -61,8 +61,8 @@
                 align-items: center;
                 flex-wrap: wrap;
                 gap: 10px;
-                margin-top: 40px;
-                padding-top: 24px;
+                margin-top: 15px;
+                padding-top: 15px;
                 border-top: 1px solid #E5E7EB;
             }
             .mobile-menu-main .mobile-menu-actions .header-social-btn {
