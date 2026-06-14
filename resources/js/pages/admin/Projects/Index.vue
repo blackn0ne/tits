@@ -17,6 +17,7 @@ interface ProjectRow {
     status: string;
     status_label: string;
     published_at: string | null;
+    visible_on_site: boolean;
     category_name: string | null;
     banner_url: string | null;
 }
@@ -57,6 +58,7 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
                             <th class="px-4 py-3 text-left font-medium">{{ t('admin.project_categories.name') }}</th>
                             <th class="px-4 py-3 text-left font-medium">{{ t('admin.projects.date') }}</th>
                             <th class="px-4 py-3 text-left font-medium">{{ t('admin.projects.status') }}</th>
+                            <th class="px-4 py-3 text-left font-medium">{{ t('admin.projects.visible_on_site') }}</th>
                             <th class="px-4 py-3 text-right font-medium">{{ t('admin.project_categories.actions') }}</th>
                         </tr>
                     </thead>
@@ -81,6 +83,14 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
                                 </span>
                             </td>
                             <td class="px-4 py-3">
+                                <span
+                                    class="inline-flex rounded-full px-2 py-0.5 text-xs"
+                                    :class="project.visible_on_site ? 'bg-lime-100 text-lime-800' : 'bg-muted text-muted-foreground'"
+                                >
+                                    {{ project.visible_on_site ? t('admin.projects.visible_on_site') : t('admin.projects.hidden_on_site') }}
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
                                 <div class="flex justify-end gap-2">
                                     <Button as-child variant="outline" size="icon" class="size-8">
                                         <Link :href="route('admin.projects.edit', project.id)">
@@ -96,7 +106,7 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
                             </td>
                         </tr>
                         <tr v-if="projects.data.length === 0">
-                            <td colspan="6" class="px-4 py-8 text-center text-muted-foreground">{{ t('admin.projects.empty') }}</td>
+                            <td colspan="7" class="px-4 py-8 text-center text-muted-foreground">{{ t('admin.projects.empty') }}</td>
                         </tr>
                     </tbody>
                 </table>

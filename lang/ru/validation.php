@@ -205,4 +205,6 @@ return [
         'translations.*.content' => 'описание',
     ],
 
+    'at_least_one_translation' => 'Укажите название хотя бы на одном языке.',
+
 ];

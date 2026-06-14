@@ -32,13 +32,11 @@ class HomeController extends Controller
             ->filter()
             ->values();
 
-        $projects = $this->resolver
-            ->constrainToLocale(
-                Project::query()
-                    ->published()
-                    ->with(['translations.language', 'category.translations']),
-                $locale,
-            )
+        $languageId = $this->resolver->languageId($locale);
+
+        $projects = Project::query()
+            ->visibleOnSite($languageId)
+            ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')
             ->limit(10)

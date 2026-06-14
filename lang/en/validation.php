@@ -197,4 +197,6 @@ return [
 
     'attributes' => [],
 
+    'at_least_one_translation' => 'Provide a title in at least one language.',
+
 ];

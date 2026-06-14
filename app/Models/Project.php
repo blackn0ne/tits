@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProjectStatus;
+use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProjectFactory> */
+    /** @use HasFactory<ProjectFactory> */
     use HasFactory, SoftDeletes;
 
     /**
@@ -72,5 +73,38 @@ class Project extends Model
                     ->whereNull('published_at')
                     ->orWhere('published_at', '<=', now());
             });
+    }
+
+    #[Scope]
+    protected function visibleOnSite(Builder $query, ?int $languageId = null): void
+    {
+        $query->published();
+
+        $query->whereHas('translations', function (Builder $builder) use ($languageId): void {
+            $builder->where('title', '!=', '');
+
+            if ($languageId !== null) {
+                $builder->where('language_id', $languageId);
+            }
+        });
+    }
+
+    public function isVisibleOnSite(?int $languageId = null): bool
+    {
+        if ($this->status !== ProjectStatus::Published) {
+            return false;
+        }
+
+        if ($this->published_at !== null && $this->published_at->isAfter(now())) {
+            return false;
+        }
+
+        $query = $this->translations()->where('title', '!=', '');
+
+        if ($languageId !== null) {
+            $query->where('language_id', $languageId);
+        }
+
+        return $query->exists();
     }
 }

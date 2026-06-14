@@ -315,6 +315,8 @@
             "meta_description_hint": "Если пусто — краткое описание из контента",
             "no_category": "Без категории",
             "empty": "Проектов пока нет",
+            "visible_on_site": "На сайте",
+            "hidden_on_site": "Скрыт",
             "search_icon": "Поиск иконки",
             "statuses": {
                 "draft": "Черновик",

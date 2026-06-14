@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\BlogPostStatus;
+use App\Enums\ProjectStatus;
 use App\Models\BlogCategory;
 use App\Models\BlogCategoryTranslation;
 use App\Models\BlogPost;
@@ -70,6 +71,60 @@ test('home page shows up to ten published projects on slider', function () {
         ->assertInertia(fn ($page) => $page
             ->component('site/Home')
             ->has('projects', 6)
+        );
+});
+
+test('draft projects are hidden on public site while published ones are visible', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $category = ProjectCategory::factory()->create();
+    ProjectCategoryTranslation::factory()->create([
+        'project_category_id' => $category->id,
+        'language_id' => $ru->id,
+        'name' => 'Категория',
+        'slug' => 'kategoriya',
+    ]);
+
+    for ($i = 1; $i <= 3; $i++) {
+        $project = Project::factory()->published()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "Опубликован {$i}",
+            'slug' => "published-{$i}",
+            'content' => '<p>Описание</p>',
+        ]);
+    }
+
+    for ($i = 1; $i <= 3; $i++) {
+        $project = Project::factory()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+            'status' => ProjectStatus::Draft,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "Черновик {$i}",
+            'slug' => "draft-{$i}",
+            'content' => '<p>Скрыто</p>',
+        ]);
+    }
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page->has('projects', 3));
+
+    $this->get(route('projects.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('projects.data', 3)
+            ->where('projects.total', 3)
         );
 });
 

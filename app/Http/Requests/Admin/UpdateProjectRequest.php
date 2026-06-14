@@ -6,6 +6,7 @@ use App\Enums\ProjectStatus;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class UpdateProjectRequest extends FormRequest
 {
@@ -18,6 +19,22 @@ class UpdateProjectRequest extends FormRequest
         if ($this->input('published_at') === '') {
             $this->merge(['published_at' => null]);
         }
+
+        if ($this->input('status') === ProjectStatus::Published->value && blank($this->input('published_at'))) {
+            $this->merge(['published_at' => now()->toDateTimeString()]);
+        }
+    }
+
+    public function withValidator(Validator $validator): void
+    {
+        $validator->after(function (Validator $validator): void {
+            $hasTitle = collect($this->input('translations', []))
+                ->contains(fn (mixed $row): bool => filled(is_array($row) ? ($row['title'] ?? null) : null));
+
+            if (! $hasTitle) {
+                $validator->errors()->add('translations', __('validation.at_least_one_translation'));
+            }
+        });
     }
 
     public function authorize(): bool
@@ -38,7 +55,7 @@ class UpdateProjectRequest extends FormRequest
             'remove_banner' => ['sometimes', 'boolean'],
             'translations' => ['required', 'array'],
             'translations.*.language_id' => ['required', 'integer', Rule::exists('languages', 'id')],
-            'translations.*.title' => ['required', 'string', 'max:255'],
+            'translations.*.title' => ['nullable', 'string', 'max:255'],
             'translations.*.meta_title' => ['nullable', 'string', 'max:255'],
             'translations.*.meta_description' => ['nullable', 'string', 'max:500'],
             'translations.*.content' => ['nullable', 'string'],

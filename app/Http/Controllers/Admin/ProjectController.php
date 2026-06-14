@@ -44,6 +44,7 @@ class ProjectController extends Controller
                     'status' => $project->status->value,
                     'status_label' => $project->status->label(),
                     'published_at' => $project->published_at?->toDateString(),
+                    'visible_on_site' => $project->isVisibleOnSite($language?->id),
                     'category_name' => $categoryTranslation?->name,
                     'banner_url' => $project->banner_path ? Storage::disk('public')->url($project->banner_path) : null,
                 ];
@@ -85,6 +86,10 @@ class ProjectController extends Controller
         }
 
         foreach ($validated['translations'] as $translationData) {
+            if (blank($translationData['title'] ?? null)) {
+                continue;
+            }
+
             $project->translations()->create([
                 'language_id' => $translationData['language_id'],
                 'title' => $translationData['title'],
@@ -145,6 +150,10 @@ class ProjectController extends Controller
         ]);
 
         foreach ($validated['translations'] as $translationData) {
+            if (blank($translationData['title'] ?? null)) {
+                continue;
+            }
+
             $project->translations()->updateOrCreate(
                 ['language_id' => $translationData['language_id']],
                 [

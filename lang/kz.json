@@ -315,6 +315,8 @@
             "meta_description_hint": "Бос болса — мазмұннан қысқаша сипаттама",
             "no_category": "Санатсыз",
             "empty": "Жобалар жоқ",
+            "visible_on_site": "Сайтта",
+            "hidden_on_site": "Жасырын",
             "search_icon": "Иконка іздеу",
             "statuses": {
                 "draft": "Жоба",
