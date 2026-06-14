@@ -12,4 +12,14 @@ abstract class Controller
     {
         return 15;
     }
+
+    protected function siteProjectsPerPage(): int
+    {
+        return 10;
+    }
+
+    protected function siteBlogPerPage(): int
+    {
+        return 12;
+    }
 }

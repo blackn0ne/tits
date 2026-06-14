@@ -21,15 +21,18 @@ class ProjectController extends Controller
     {
         $locale = app()->getLocale();
 
-        $projects = Project::query()
-            ->published()
-            ->with(['translations.language', 'category.translations'])
+        $projects = $this->resolver
+            ->constrainToLocale(
+                Project::query()
+                    ->published()
+                    ->with(['translations.language', 'category.translations']),
+                $locale,
+            )
             ->latest('published_at')
             ->latest('id')
-            ->get()
-            ->map(fn (Project $project) => $this->resolver->mapProject($project, $locale))
-            ->filter()
-            ->values();
+            ->paginate($this->siteProjectsPerPage())
+            ->withQueryString()
+            ->through(fn (Project $project) => $this->resolver->mapProject($project, $locale));
 
         $categories = Project::query()
             ->published()

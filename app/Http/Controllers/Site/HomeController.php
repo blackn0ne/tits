@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')
-            ->limit(3)
+            ->limit(10)
             ->get()
             ->map(fn (Project $project) => $this->resolver->mapProject($project, $locale))
             ->filter()

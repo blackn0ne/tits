@@ -11,6 +11,7 @@ use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\ProjectCategoryTranslation;
 use App\Models\ProjectTranslation;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -23,6 +24,25 @@ class LocalizedContentResolver
         $code = $locale ?? app()->getLocale();
 
         return Language::query()->where('code', $code)->value('id');
+    }
+
+    /**
+     * @template TModel of \Illuminate\Database\Eloquent\Model
+     *
+     * @param  Builder<TModel>  $query
+     * @return Builder<TModel>
+     */
+    public function constrainToLocale(Builder $query, ?string $locale = null): Builder
+    {
+        $languageId = $this->languageId($locale);
+
+        if ($languageId !== null) {
+            $query->whereHas('translations', function (Builder $builder) use ($languageId): void {
+                $builder->where('language_id', $languageId);
+            });
+        }
+
+        return $query;
     }
 
     /**

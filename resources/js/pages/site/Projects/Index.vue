@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import SiteLayout from '@/layouts/site/SiteLayout.vue';
 import ProjectCaseMedia from '@/components/site/ProjectCaseMedia.vue';
+import SitePagination from '@/components/site/SitePagination.vue';
 import { useI18n } from '@/composables/useI18n';
 import { siteAsset } from '@/composables/useSiteAsset';
 import { Link } from '@inertiajs/vue3';
+import type { Paginated, SeoData } from '@/types';
 
 type ProjectCategory = {
     id: number;
@@ -23,10 +25,8 @@ type Project = {
     category: { name: string; slug: string } | null;
 };
 
-import type { SeoData } from '@/types';
-
 defineProps<{
-    projects: Project[];
+    projects: Paginated<Project>;
     categories: ProjectCategory[];
     seo: SeoData;
 }>();
@@ -53,8 +53,8 @@ const { t } = useI18n();
                         </div>
                     </div>
 
-                    <div v-if="projects.length" class="site-projects-grid square-dot">
-                        <article v-for="project in projects" :key="project.id" class="case-slide site-projects-grid__item">
+                    <div v-if="projects.data.length" class="site-projects-grid square-dot">
+                        <article v-for="project in projects.data" :key="project.id" class="case-slide site-projects-grid__item">
                             <ProjectCaseMedia :title="project.title" :banner-url="project.banner_url" />
                             <div class="case-slide__panel">
                                 <div v-if="project.category" class="slide-category">
@@ -74,6 +74,8 @@ const { t } = useI18n();
                     </div>
 
                     <p v-else class="site-page-empty">{{ t('site.projects.empty') }}</p>
+
+                    <SitePagination :meta="projects" />
 
                     <div class="bottom-shape-area square-dot">
                         <img :src="siteAsset('images/about/shape-02.svg')" alt="" />

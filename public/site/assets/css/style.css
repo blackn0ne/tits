@@ -14653,6 +14653,23 @@ section .section-inner.border-1 {
   color: var(--color-heading-1);
   background-color: var(--color-primary);
 }
+.wg-pagination .pagination-item.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.site-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding: 0 24px 8px;
+}
+.site-pagination__summary {
+  color: var(--color-body);
+  font-size: 14px;
+  text-align: center;
+}
 
 .blog-sidebar {
   display: flex;

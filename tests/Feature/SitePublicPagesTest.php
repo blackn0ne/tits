@@ -6,6 +6,10 @@ use App\Models\BlogCategoryTranslation;
 use App\Models\BlogPost;
 use App\Models\BlogPostTranslation;
 use App\Models\Language;
+use App\Models\Project;
+use App\Models\ProjectCategory;
+use App\Models\ProjectCategoryTranslation;
+use App\Models\ProjectTranslation;
 use App\Models\SiteSetting;
 use App\Models\User;
 use Database\Seeders\AdminUserSeeder;
@@ -99,9 +103,10 @@ test('blog index page renders published posts', function () {
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->component('site/Blog/Index')
-            ->has('posts', 6)
+            ->has('posts.data', 6)
+            ->where('posts.per_page', 12)
             ->has('categories', 6)
-            ->where('posts.0.title', 'Когда стоит нести ноутбук в сервис, а когда хватит чистки')
+            ->where('posts.data.0.title', 'Когда стоит нести ноутбук в сервис, а когда хватит чистки')
         );
 });
 
@@ -124,9 +129,10 @@ test('projects index page renders published projects', function () {
         ->assertOk()
         ->assertInertia(fn ($page) => $page
             ->component('site/Projects/Index')
-            ->has('projects', 3)
+            ->has('projects.data', 3)
+            ->where('projects.per_page', 10)
             ->has('categories', 3)
-            ->where('projects.0.title', 'Приложение для сервисного центра')
+            ->where('projects.data.0.title', 'Приложение для сервисного центра')
         );
 });
 
@@ -168,6 +174,90 @@ test('draft blog post is not shown on public site', function () {
     ]);
 
     $this->get(route('blog.show', ['slug' => 'draft-post']))->assertNotFound();
+});
+
+test('projects index paginates published projects', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $category = ProjectCategory::factory()->create();
+    ProjectCategoryTranslation::factory()->create([
+        'project_category_id' => $category->id,
+        'language_id' => $ru->id,
+        'name' => 'Категория',
+        'slug' => 'kategoriya',
+    ]);
+
+    for ($i = 1; $i <= 11; $i++) {
+        $project = Project::factory()->published()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "Проект {$i}",
+            'slug' => "proekt-{$i}",
+            'content' => '<p>Описание</p>',
+        ]);
+    }
+
+    $this->get(route('projects.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('projects.data', 10)
+            ->where('projects.total', 11)
+            ->where('projects.per_page', 10)
+        );
+
+    $this->get(route('projects.index', ['page' => 2]))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('projects.data', 1)
+            ->where('projects.current_page', 2)
+        );
+});
+
+test('blog index paginates published posts', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $category = BlogCategory::factory()->create();
+    BlogCategoryTranslation::factory()->create([
+        'blog_category_id' => $category->id,
+        'language_id' => $ru->id,
+        'name' => 'Категория',
+        'slug' => 'kategoriya',
+    ]);
+
+    for ($i = 1; $i <= 13; $i++) {
+        $post = BlogPost::factory()->published()->create([
+            'blog_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        BlogPostTranslation::factory()->create([
+            'blog_post_id' => $post->id,
+            'language_id' => $ru->id,
+            'title' => "Пост {$i}",
+            'slug' => "post-{$i}",
+            'content' => '<p>Текст</p>',
+        ]);
+    }
+
+    $this->get(route('blog.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('posts.data', 12)
+            ->where('posts.total', 13)
+            ->where('posts.per_page', 12)
+        );
+
+    $this->get(route('blog.index', ['page' => 2]))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('posts.data', 1)
+            ->where('posts.current_page', 2)
+        );
 });
 
 test('public site shares locale and languages', function () {

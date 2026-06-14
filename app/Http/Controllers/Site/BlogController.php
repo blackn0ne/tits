@@ -21,15 +21,18 @@ class BlogController extends Controller
     {
         $locale = app()->getLocale();
 
-        $posts = BlogPost::query()
-            ->published()
-            ->with(['translations.language', 'category.translations'])
+        $posts = $this->resolver
+            ->constrainToLocale(
+                BlogPost::query()
+                    ->published()
+                    ->with(['translations.language', 'category.translations']),
+                $locale,
+            )
             ->latest('published_at')
             ->latest('id')
-            ->get()
-            ->map(fn (BlogPost $post) => $this->resolver->mapBlogPost($post, $locale))
-            ->filter()
-            ->values();
+            ->paginate($this->siteBlogPerPage())
+            ->withQueryString()
+            ->through(fn (BlogPost $post) => $this->resolver->mapBlogPost($post, $locale));
 
         $categories = BlogPost::query()
             ->published()

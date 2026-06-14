@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import SiteLayout from '@/layouts/site/SiteLayout.vue';
+import SitePagination from '@/components/site/SitePagination.vue';
 import { useI18n } from '@/composables/useI18n';
 import { siteAsset } from '@/composables/useSiteAsset';
 import { Link } from '@inertiajs/vue3';
+import type { Paginated, SeoData } from '@/types';
 
 type BlogCategory = {
     id: number;
@@ -22,10 +24,8 @@ type BlogPost = {
     category: { name: string; slug: string } | null;
 };
 
-import type { SeoData } from '@/types';
-
 defineProps<{
-    posts: BlogPost[];
+    posts: Paginated<BlogPost>;
     categories: BlogCategory[];
     seo: SeoData;
 }>();
@@ -52,8 +52,8 @@ const { t } = useI18n();
                         </div>
                     </div>
 
-                    <div v-if="posts.length" class="site-cards-grid square-dot">
-                        <article v-for="post in posts" :key="post.id" class="blog-card site-cards-grid__item">
+                    <div v-if="posts.data.length" class="site-cards-grid square-dot">
+                        <article v-for="post in posts.data" :key="post.id" class="blog-card site-cards-grid__item">
                             <div v-if="post.category" class="slide-category">
                                 <span class="slide-category__icon" aria-hidden="true"></span>
                                 <span class="slide-category__label">{{ post.category.name }}</span>
@@ -75,6 +75,8 @@ const { t } = useI18n();
                     </div>
 
                     <p v-else class="site-page-empty">{{ t('site.blog.empty') }}</p>
+
+                    <SitePagination :meta="posts" />
 
                     <div class="bottom-shape-area square-dot">
                         <img :src="siteAsset('images/about/shape-02.svg')" alt="" />
