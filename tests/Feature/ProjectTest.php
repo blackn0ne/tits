@@ -62,3 +62,52 @@ test('admin can create project with kazakh slug', function () {
 
     expect($kzTranslation->slug)->not->toBe('');
 });
+
+test('admin can update project', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $kz = Language::query()->where('code', 'kz')->firstOrFail();
+
+    $project = Project::factory()->create([
+        'user_id' => $admin->id,
+        'status' => ProjectStatus::Draft,
+    ]);
+
+    ProjectTranslation::factory()->create([
+        'project_id' => $project->id,
+        'language_id' => $ru->id,
+        'title' => 'Старый проект',
+        'slug' => 'staryi-proekt',
+        'content' => '<p>Старое описание</p>',
+    ]);
+
+    ProjectTranslation::factory()->create([
+        'project_id' => $project->id,
+        'language_id' => $kz->id,
+        'title' => 'Ескі жоба',
+        'slug' => 'eski-zhoba',
+        'content' => '<p>Ескі сипаттама</p>',
+    ]);
+
+    $this->actingAs($admin)->put(route('admin.projects.update', $project), [
+        'status' => ProjectStatus::Published->value,
+        'published_at' => '2026-06-13T12:00',
+        'translations' => [
+            $ru->id => [
+                'language_id' => $ru->id,
+                'title' => 'Обновлённый проект',
+                'content' => '<p>Новое описание</p>',
+            ],
+            $kz->id => [
+                'language_id' => $kz->id,
+                'title' => 'Жаңартылған жоба',
+                'content' => '<p>Жаңа сипаттама</p>',
+            ],
+        ],
+    ])->assertRedirect(route('admin.projects.index'));
+
+    $project->refresh();
+
+    expect($project->status)->toBe(ProjectStatus::Published)
+        ->and($project->translations()->where('language_id', $ru->id)->value('title'))->toBe('Обновлённый проект');
+});

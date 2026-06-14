@@ -107,7 +107,7 @@ const submit = () => {
     const options = { forceFormData: true, preserveScroll: true };
 
     if (isEditing.value) {
-        form.post(route('admin.blog-posts.update', props.post!.id), options);
+        form.put(route('admin.blog-posts.update', props.post!.id), options);
         return;
     }
 
