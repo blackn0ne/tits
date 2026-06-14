@@ -89,7 +89,7 @@ test('admin can update project', function () {
         'content' => '<p>Ескі сипаттама</p>',
     ]);
 
-    $this->actingAs($admin)->put(route('admin.projects.update', $project), [
+    $this->actingAs($admin)->post(route('admin.projects.update', $project), [
         'status' => ProjectStatus::Published->value,
         'published_at' => '2026-06-13T12:00',
         'translations' => [

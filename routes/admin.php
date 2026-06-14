@@ -21,12 +21,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::post('site-settings', [SiteSettingsController::class, 'update'])->name('site-settings.update');
 
     Route::resource('blog-categories', BlogCategoryController::class)->except(['show']);
-    Route::resource('blog-posts', BlogPostController::class)->except(['show']);
+    Route::resource('blog-posts', BlogPostController::class)->except(['show', 'update']);
+    Route::post('blog-posts/{blog_post}', [BlogPostController::class, 'update'])->name('blog-posts.update');
     Route::resource('project-categories', ProjectCategoryController::class)->except(['show']);
-    Route::resource('projects', ProjectController::class)->except(['show']);
+    Route::resource('projects', ProjectController::class)->except(['show', 'update']);
+    Route::post('projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::prefix('sales')->name('sales.')->group(function () {
-        Route::resource('products', SalesProductController::class)->except(['show']);
+        Route::resource('products', SalesProductController::class)->except(['show', 'update']);
+        Route::post('products/{product}', [SalesProductController::class, 'update'])->name('products.update');
         Route::resource('services', SalesServiceController::class)->except(['show']);
         Route::resource('clients', SalesClientController::class)->except(['show']);
         Route::resource('orders', SalesOrderController::class)->except(['show']);
