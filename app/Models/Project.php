@@ -76,20 +76,16 @@ class Project extends Model
     }
 
     #[Scope]
-    protected function visibleOnSite(Builder $query, ?int $languageId = null): void
+    protected function visibleOnSite(Builder $query): void
     {
         $query->published();
 
-        $query->whereHas('translations', function (Builder $builder) use ($languageId): void {
+        $query->whereHas('translations', function (Builder $builder): void {
             $builder->where('title', '!=', '');
-
-            if ($languageId !== null) {
-                $builder->where('language_id', $languageId);
-            }
         });
     }
 
-    public function isVisibleOnSite(?int $languageId = null): bool
+    public function isVisibleOnSite(): bool
     {
         if ($this->status !== ProjectStatus::Published) {
             return false;
@@ -99,12 +95,6 @@ class Project extends Model
             return false;
         }
 
-        $query = $this->translations()->where('title', '!=', '');
-
-        if ($languageId !== null) {
-            $query->where('language_id', $languageId);
-        }
-
-        return $query->exists();
+        return $this->translations()->where('title', '!=', '')->exists();
     }
 }

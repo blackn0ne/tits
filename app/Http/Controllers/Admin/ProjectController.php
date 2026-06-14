@@ -44,7 +44,7 @@ class ProjectController extends Controller
                     'status' => $project->status->value,
                     'status_label' => $project->status->label(),
                     'published_at' => $project->published_at?->toDateString(),
-                    'visible_on_site' => $project->isVisibleOnSite($language?->id),
+                    'visible_on_site' => $project->isVisibleOnSite(),
                     'category_name' => $categoryTranslation?->name,
                     'banner_url' => $project->banner_path ? Storage::disk('public')->url($project->banner_path) : null,
                 ];

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
-use App\Models\Language;
 use App\Services\LocalizedContentResolver;
 use App\Services\SeoService;
 use Inertia\Inertia;
@@ -21,13 +20,9 @@ class BlogController extends Controller
     {
         $locale = app()->getLocale();
 
-        $posts = $this->resolver
-            ->constrainToLocale(
-                BlogPost::query()
-                    ->published()
-                    ->with(['translations.language', 'category.translations']),
-                $locale,
-            )
+        $posts = BlogPost::query()
+            ->visibleOnSite()
+            ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')
             ->paginate($this->siteBlogPerPage())
@@ -56,16 +51,11 @@ class BlogController extends Controller
     public function show(string $slug): Response
     {
         $locale = app()->getLocale();
-        $languageId = Language::query()->where('code', $locale)->value('id');
 
         $post = BlogPost::query()
             ->published()
-            ->whereHas('translations', function ($query) use ($slug, $languageId): void {
+            ->whereHas('translations', function ($query) use ($slug): void {
                 $query->where('slug', $slug);
-
-                if ($languageId !== null) {
-                    $query->where('language_id', $languageId);
-                }
             })
             ->with(['translations.language', 'category.translations'])
             ->firstOrFail();

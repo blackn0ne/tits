@@ -128,6 +128,71 @@ test('draft projects are hidden on public site while published ones are visible'
         );
 });
 
+test('projects with only russian translation appear on kazakh site', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $kz = Language::query()->where('code', 'kz')->firstOrFail();
+    $category = ProjectCategory::factory()->create();
+    ProjectCategoryTranslation::factory()->create([
+        'project_category_id' => $category->id,
+        'language_id' => $ru->id,
+        'name' => 'Категория',
+        'slug' => 'kategoriya',
+    ]);
+    ProjectCategoryTranslation::factory()->create([
+        'project_category_id' => $category->id,
+        'language_id' => $kz->id,
+        'name' => 'Санат',
+        'slug' => 'sanat',
+    ]);
+
+    for ($i = 1; $i <= 3; $i++) {
+        $project = Project::factory()->published()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "RU only {$i}",
+            'slug' => "ru-only-{$i}",
+            'content' => '<p>RU</p>',
+        ]);
+    }
+
+    for ($i = 1; $i <= 3; $i++) {
+        $project = Project::factory()->published()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "Both {$i}",
+            'slug' => "both-ru-{$i}",
+            'content' => '<p>RU</p>',
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $kz->id,
+            'title' => "Екеуі {$i}",
+            'slug' => "both-kz-{$i}",
+            'content' => '<p>KZ</p>',
+        ]);
+    }
+
+    $this->withSession(['locale' => 'kz'])
+        ->get(route('projects.index'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->has('projects.data', 6)
+            ->where('projects.total', 6)
+        );
+});
+
 test('unknown route returns site not found page', function () {
     $this->get('/this-page-does-not-exist')
         ->assertNotFound()

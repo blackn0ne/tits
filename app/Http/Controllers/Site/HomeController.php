@@ -22,7 +22,7 @@ class HomeController extends Controller
         $locale = app()->getLocale();
 
         $posts = BlogPost::query()
-            ->published()
+            ->visibleOnSite()
             ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')
@@ -32,10 +32,8 @@ class HomeController extends Controller
             ->filter()
             ->values();
 
-        $languageId = $this->resolver->languageId($locale);
-
         $projects = Project::query()
-            ->visibleOnSite($languageId)
+            ->visibleOnSite()
             ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')

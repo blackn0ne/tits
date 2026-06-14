@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\Language;
 use App\Models\Project;
 use App\Services\LocalizedContentResolver;
 use App\Services\SeoService;
@@ -21,10 +20,8 @@ class ProjectController extends Controller
     {
         $locale = app()->getLocale();
 
-        $languageId = $this->resolver->languageId($locale);
-
         $projects = Project::query()
-            ->visibleOnSite($languageId)
+            ->visibleOnSite()
             ->with(['translations.language', 'category.translations'])
             ->latest('published_at')
             ->latest('id')
@@ -54,16 +51,11 @@ class ProjectController extends Controller
     public function show(string $slug): Response
     {
         $locale = app()->getLocale();
-        $languageId = Language::query()->where('code', $locale)->value('id');
 
         $project = Project::query()
             ->published()
-            ->whereHas('translations', function ($query) use ($slug, $languageId): void {
+            ->whereHas('translations', function ($query) use ($slug): void {
                 $query->where('slug', $slug);
-
-                if ($languageId !== null) {
-                    $query->where('language_id', $languageId);
-                }
             })
             ->with(['translations.language', 'category.translations'])
             ->firstOrFail();
