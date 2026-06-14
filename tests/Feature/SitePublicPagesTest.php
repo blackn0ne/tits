@@ -39,6 +39,40 @@ test('home page renders public site component', function () {
         );
 });
 
+test('home page shows up to ten published projects on slider', function () {
+    $admin = User::factory()->admin()->create();
+    $ru = Language::query()->where('code', 'ru')->firstOrFail();
+    $category = ProjectCategory::factory()->create();
+    ProjectCategoryTranslation::factory()->create([
+        'project_category_id' => $category->id,
+        'language_id' => $ru->id,
+        'name' => 'Категория',
+        'slug' => 'kategoriya',
+    ]);
+
+    for ($i = 1; $i <= 6; $i++) {
+        $project = Project::factory()->published()->create([
+            'project_category_id' => $category->id,
+            'user_id' => $admin->id,
+        ]);
+
+        ProjectTranslation::factory()->create([
+            'project_id' => $project->id,
+            'language_id' => $ru->id,
+            'title' => "Проект {$i}",
+            'slug' => "proekt-{$i}",
+            'content' => '<p>Описание</p>',
+        ]);
+    }
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->component('site/Home')
+            ->has('projects', 6)
+        );
+});
+
 test('unknown route returns site not found page', function () {
     $this->get('/this-page-does-not-exist')
         ->assertNotFound()

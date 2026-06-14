@@ -54,6 +54,12 @@ export function syncSiteWow(): void {
     wow?.sync();
 }
 
+export function initSiteSliders(): void {
+    const init = (window as Window & { __initSiteSliders?: () => void }).__initSiteSliders;
+
+    init?.();
+}
+
 export async function loadSiteScripts(): Promise<void> {
     if (scriptsLoaded) {
         return;

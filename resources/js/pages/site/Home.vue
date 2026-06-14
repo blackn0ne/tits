@@ -2,10 +2,10 @@
 import SiteHomeContent from '@/components/site/SiteHomeContent.vue';
 import SiteLayout from '@/layouts/site/SiteLayout.vue';
 import { scrollToAnchor } from '@/composables/useSiteAnchorScroll';
-import { syncSiteWow } from '@/composables/useSiteScripts';
+import { initSiteSliders, loadSiteScripts, syncSiteWow } from '@/composables/useSiteScripts';
 import { useI18n } from '@/composables/useI18n';
 import type { SeoData } from '@/types';
-import { nextTick, onMounted } from 'vue';
+import { nextTick, onMounted, onUnmounted } from 'vue';
 
 type ContentItem = {
     id: number;
@@ -27,10 +27,13 @@ defineProps<{
 const { t } = useI18n();
 
 onMounted(async () => {
+    await loadSiteScripts();
     await nextTick();
-    window.setTimeout(() => {
+
+    requestAnimationFrame(() => {
+        initSiteSliders();
         syncSiteWow();
-    }, 350);
+    });
 
     if (!window.location.hash) {
         return;
@@ -39,6 +42,11 @@ onMounted(async () => {
     window.setTimeout(() => {
         scrollToAnchor(window.location.hash);
     }, 300);
+});
+
+onUnmounted(() => {
+    document.querySelector<HTMLElement & { swiper?: { destroy: (deleteInstance?: boolean, cleanStyles?: boolean) => void } }>('.cases-slider')?.swiper?.destroy(true, true);
+    document.querySelector<HTMLElement & { swiper?: { destroy: (deleteInstance?: boolean, cleanStyles?: boolean) => void } }>('.blog-slider')?.swiper?.destroy(true, true);
 });
 </script>
 

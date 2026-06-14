@@ -176,9 +176,17 @@
         });
 
       });
-      $(document).ready(function () {
+      function destroySwiperInstance(element) {
+        if (element && element.swiper) {
+          element.swiper.destroy(true, true);
+        }
+      }
+
+      function initHomeCasesSlider() {
         var casesSliderEl = document.querySelector(".cases-slider");
         if (!casesSliderEl) return;
+
+        destroySwiperInstance(casesSliderEl);
 
         new Swiper(".cases-slider", {
           slidesPerView: 1,
@@ -186,16 +194,21 @@
           spaceBetween: 0,
           speed: 650,
           loop: false,
+          watchOverflow: true,
+          observer: true,
+          observeParents: true,
           navigation: {
             nextEl: ".cases-slider-next",
             prevEl: ".cases-slider-prev",
           },
         });
+      }
 
-      });
-      $(document).ready(function () {
+      function initHomeBlogSlider() {
         var blogSliderEl = document.querySelector(".blog-slider");
         if (!blogSliderEl) return;
+
+        destroySwiperInstance(blogSliderEl);
 
         new Swiper(".blog-slider", {
           slidesPerView: 1,
@@ -203,6 +216,9 @@
           spaceBetween: 0,
           speed: 650,
           loop: false,
+          watchOverflow: true,
+          observer: true,
+          observeParents: true,
           navigation: {
             nextEl: ".blog-slider-next",
             prevEl: ".blog-slider-prev",
@@ -216,7 +232,15 @@
             },
           },
         });
+      }
 
+      window.__initSiteSliders = function () {
+        initHomeCasesSlider();
+        initHomeBlogSlider();
+      };
+
+      $(document).ready(function () {
+        window.__initSiteSliders();
       });
       $(document).ready(function () {
         var projectSwiper = new Swiper(".portfolio-slider", {
