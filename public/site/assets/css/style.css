@@ -18964,13 +18964,48 @@ section .section-inner.border-1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .service-card {
+    width: 100%;
+  }
+
+  .service-card__title {
+    max-width: none;
+    line-height: 1.2;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
   .service-card:nth-child(1),
   .service-card:nth-child(2) {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .service-card:nth-child(2) {
+  .service-card:nth-child(2),
+  .service-card:nth-child(4) {
     border-right: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .services-section .section-title-area {
+    padding: 72px 36px 96px;
+  }
+
+  .services-section .section-title-area .section-title {
+    font-size: clamp(36px, 5vw, 48px);
+  }
+
+  .service-card__title {
+    font-size: 20px;
+  }
+
+  .service-card__icon {
+    margin-bottom: 32px;
+  }
+
+  .service-card__tags li {
+    font-size: 10px;
+    padding: 5px 8px;
   }
 }
 
